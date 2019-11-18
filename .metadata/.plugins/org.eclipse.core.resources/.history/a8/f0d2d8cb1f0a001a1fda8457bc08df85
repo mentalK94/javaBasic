@@ -1,0 +1,35 @@
+/* 
+ *  Controller.java
+ *  version 0.1
+ *  2019-11-19
+ *  Copyright 2019. hansol. All rights reserved.
+ */
+
+package controller;
+
+import model.Card;
+
+public class Controller {
+
+	protected int count=0;
+	private Card card = null;
+	
+	public void run() {
+		
+		card = new Card();
+		
+		System.out.println("수를 결정하였습니다. 맞추어 보세요");
+		System.out.println("0-99");
+		
+		while(true) {
+			count++;
+			System.out.print(count+">>");
+			input();
+			result();
+		}
+	}
+	
+	public boolean result() {
+		
+	}
+}

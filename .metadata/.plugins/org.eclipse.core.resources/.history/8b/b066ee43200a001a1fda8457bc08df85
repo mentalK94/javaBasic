@@ -1,0 +1,18 @@
+/* 
+ *  View.java
+ *  version 0.1
+ *  2019-11-19
+ *  Copyright 2019. hansol. All rights reserved.
+ */
+
+package view;
+
+import java.util.Scanner;
+
+public class View {
+
+	Scanner scanner = new Scanner(System.in);
+	public void startPrint() {
+		
+	}
+}

@@ -1,0 +1,52 @@
+/* 
+ *  Controller.java
+ *  version 0.1
+ *  2019-11-19
+ *  Copyright 2019. hansol. All rights reserved.
+ */
+
+package controller;
+
+import model.Card;
+import view.View;
+
+public class Controller {
+
+	protected int count=0;
+	private Card card = null;
+	private View view;
+	
+	public void run() {
+		
+		card = new Card();
+
+		view.startPrint();
+		
+		while(true) {
+			count++;
+			view.turnPrint(count);
+			
+			int input = view.inputNumber(); // 답 입력
+			if(result(input, card.getAnswer()) == 200) {
+				// "맞았습니다" 결과출력
+				view.answerPrint();
+				// 다시할 것인지 여부 확인
+				if(view.processPrint().equals("n")) {
+					break;
+				}
+			} else {
+				view.processPrint()
+			}
+		}
+	}
+	
+	public int result(int input, int answer) {
+		if(input == answer) {
+			return 200;
+		} else if (input > answer){
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+}
