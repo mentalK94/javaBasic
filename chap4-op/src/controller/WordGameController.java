@@ -39,4 +39,12 @@ public class WordGameController {
 	    System.out.println("처음 시작할 단어는 " + startWord + "입니다. ");
 	}
 	
+	public void run() {
+		// 사용자가 입력한 단어가 끝말잇기가 되는지 안되는지 확인
+		while(checkSuccess()) {
+			
+		}
+		
+	}
+	
 }
