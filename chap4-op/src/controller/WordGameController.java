@@ -8,43 +8,64 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import model.Player;
 import model.SuggestionWord;
+import view.WordGameView;
 
 public class WordGameController {
 
 	private ArrayList<Player> players; // 게임에 참가할 플레이어
-	private SuggestionWord suggestionWord; // 게임 시작시 사용할 제시어
-	private Scanner scanner;
+	private String preWord;	
 	
 	public void init() { // 게임 초기화
-		
-		scanner = new Scanner(System.in); // 입력받을 수 있도록 스캐너 생성
+				
 		players = new ArrayList<Player>();
-		
-		System.out.println("끝말잇기 게임에 오신걸을 환영합니다!"); // 게임 시작 메시지
-		System.out.print("끝말잇기 게임에 참여할 인원 수를 입력하세요 : "); // 게임 시작 메시지
-		
-		int userCount = scanner.nextInt(); // 유저 명수 입력
+	
+		WordGameView.initMessage();		
+		int userCount = WordGameView.inputUserCount(); // 유저 수 입력		
+		WordGameView.deleteBuffer();
 		
 		for (int i=0; i<userCount; i++) {
-			System.out.print("유저 " + i + " 이름입력 : "); // 이름 입력하라는 메시지 출력 
-			players.add(new Player(scanner.nextLine()));  // 이름 입력받아 Player생성 후 players에 add
+			WordGameView.userNameInputMessage(i);
+			players.add(new Player(WordGameView.inputUserName()));  // 이름 입력받아 Player생성 후 players에 add
 		}
 		
-	    String startWord = suggestionWord.getWord(); // 제시어 삽입
-	    
-	    System.out.println("처음 시작할 단어는 " + startWord + "입니다. ");
+        setPreWord(SuggestionWord.getWord()); // 제시어 삽입	    
+	    WordGameView.suggestionWordMessage(preWord); // 제시어 출력
 	}
 	
 	public void run() {
-		// 사용자가 입력한 단어가 끝말잇기가 되는지 안되는지 확인
-		while(checkSuccess()) {
-			
-		}
 		
+		for(int order=0; order<players.size(); order++) {
+			
+			order = rotateOrder(order, players.size()); // 순서 교체
+			
+			// 1. 플레이어 입력 창 띄우기
+			WordGameView.userWordInputMessage(players, order);
+			
+			// 2. 플레이어 단어입력
+			players.get(order).setWord(WordGameView.inputUserWord());
+			
+			// 3. 맞는지 확인
+			if(WordController.checkSuccess(getPreWord(), players.get(order).getWord())) {
+				setPreWord(players.get(order).getWord());  // 시작단어 교체
+			} else {
+				WordGameView.defeatMessage(players.get(order).getName());
+				break;
+			}
+		}		
 	}
 	
+	public int rotateOrder(int order, int userCount) {
+		return order % userCount;
+	}
+
+	public String getPreWord() {
+		return preWord;
+	}
+
+	public void setPreWord(String preWord) {
+		this.preWord = preWord;
+	}
 }

@@ -13,5 +13,6 @@ public class WordGameApp {
 	public static void main(String[] args) {
 		WordGameController gameController = new WordGameController();
 		gameController.init();
+		gameController.run();
 	}
 }
