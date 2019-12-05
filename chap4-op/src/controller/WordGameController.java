@@ -37,21 +37,20 @@ public class WordGameController {
 	
 	public void run() {
 		
-		for(int order=0; order<players.size(); order++) {
+		for(int order=0; rotateOrder(order, players.size()) < players.size(); order++) {
 			
-			order = rotateOrder(order, players.size()); // 순서 교체
-			
+			int idx = rotateOrder(order, players.size());
 			// 1. 플레이어 입력 창 띄우기
-			WordGameView.userWordInputMessage(players, order);
+			WordGameView.userWordInputMessage(players, idx);
 			
 			// 2. 플레이어 단어입력
-			players.get(order).setWord(WordGameView.inputUserWord());
+			players.get(idx).setWord(WordGameView.inputUserWord());
 			
 			// 3. 맞는지 확인
-			if(WordController.checkSuccess(getPreWord(), players.get(order).getWord())) {
-				setPreWord(players.get(order).getWord());  // 시작단어 교체
+			if(WordController.checkSuccess(getPreWord(), players.get(idx).getWord())) {
+				setPreWord(players.get(idx).getWord());  // 시작단어 교체
 			} else {
-				WordGameView.defeatMessage(players.get(order).getName());
+				WordGameView.defeatMessage(players.get(idx).getName());
 				break;
 			}
 		}		
