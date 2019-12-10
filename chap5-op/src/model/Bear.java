@@ -22,5 +22,4 @@ public class Bear extends GameObject {
 	public char getShape() {
 		return 'B';
 	}
-
 }

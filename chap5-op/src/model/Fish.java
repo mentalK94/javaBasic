@@ -23,22 +23,32 @@ public class Fish extends GameObject {
 		Random random = new Random();
 		
 		for(int i=0; i<distance; i++) {
+			int pre_x = this.x;
+			int pre_y = this.y;
 			int moveCode = random.nextInt(4); // 0~3중에 하나 선택
 			
 			// 아래 코드 간소화할 방법 생각해보기
 			if(moveCode == Move.UP.ordinal()) {
 				System.out.println(Move.UP.name());
-				this.y++;
+				this.y--;
 			} else if(moveCode == Move.DOWN.ordinal()) {
 				System.out.println(Move.DOWN.name());
-				this.y--;
+				this.y++;
 			} else if(moveCode == Move.LEFT.ordinal()) {
 				System.out.println(Move.LEFT.name());
 				this.x--;
 			} else if(moveCode == Move.RIGHT.ordinal()) {
 				System.out.println(Move.RIGHT.name());
 				this.x++;
-			} 
+			}
+			
+			if(constraintMove(this.x, this.y)) {
+				continue;
+			} else {
+				this.x = pre_x;
+				this.y = pre_y;
+				i--;
+			}
 		}
 		System.out.println("x:"+getX()+", y:"+getY());
 	}
@@ -47,5 +57,4 @@ public class Fish extends GameObject {
 	public char getShape() {
 		return '@';
 	}
-
 }
