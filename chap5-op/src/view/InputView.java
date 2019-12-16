@@ -1,13 +1,15 @@
+/* 
+ * InputView.java
+ * version 0.1
+ * 2019-12-16
+ * Copyright 2019. hansol. All rights reserved.
+ */
+
+
 package view;
 
-import java.util.Scanner;
+public interface InputView {
 
-public class InputView {
-
-	private Scanner scanner = new Scanner(System.in);
+	public String inputKey(); // 방향키 입력 메소드
 	
-	public void inputKey() {
-		String moveKey = scanner.next();
-		if(moveKey.equals("a"))
-	}
 }

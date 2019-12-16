@@ -23,8 +23,8 @@ public class Fish extends GameObject {
 		Random random = new Random();
 		
 		for(int i=0; i<distance; i++) {
-			int pre_x = this.x;
-			int pre_y = this.y;
+			int preX = this.x;
+			int preY = this.y;
 			int moveCode = random.nextInt(4); // 0~3중에 하나 선택
 			
 			// 아래 코드 간소화할 방법 생각해보기
@@ -45,8 +45,8 @@ public class Fish extends GameObject {
 			if(constraintMove(this.x, this.y)) {
 				continue;
 			} else {
-				this.x = pre_x;
-				this.y = pre_y;
+				this.x = preX;
+				this.y = preY;
 				i--;
 			}
 		}
