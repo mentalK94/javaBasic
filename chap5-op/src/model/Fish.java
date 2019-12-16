@@ -29,16 +29,16 @@ public class Fish extends GameObject {
 			
 			// 아래 코드 간소화할 방법 생각해보기
 			if(moveCode == Move.UP.ordinal()) {
-				System.out.println(Move.UP.name());
+				//System.out.println(Move.UP.name());
 				this.y--;
 			} else if(moveCode == Move.DOWN.ordinal()) {
-				System.out.println(Move.DOWN.name());
+				//System.out.println(Move.DOWN.name());
 				this.y++;
 			} else if(moveCode == Move.LEFT.ordinal()) {
-				System.out.println(Move.LEFT.name());
+				//System.out.println(Move.LEFT.name());
 				this.x--;
 			} else if(moveCode == Move.RIGHT.ordinal()) {
-				System.out.println(Move.RIGHT.name());
+				//System.out.println(Move.RIGHT.name());
 				this.x++;
 			}
 			
@@ -50,7 +50,7 @@ public class Fish extends GameObject {
 				i--;
 			}
 		}
-		System.out.println("x:"+getX()+", y:"+getY());
+		// System.out.println("x:"+getX()+", y:"+getY());
 	}
 
 	@Override
