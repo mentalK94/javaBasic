@@ -1,8 +1,6 @@
 package test;
 
-import model.Fish;
-import type.Move;
-import view.OutputViewImpl;
+import model.Bear;
 
 public class Test {
 
@@ -12,8 +10,13 @@ public class Test {
 		// Fish fish = new Fish(0, 0, 3);
 		// fish.move();
 		
-		OutputViewImpl outputViewImpl = new OutputViewImpl();
-		outputViewImpl.gameBoardView(20, 10, 0, 0, 0, 0);
+//		String arr[][] = new String[20][10];
+//		OutputViewImpl outputViewImpl = new OutputViewImpl();
+//		outputViewImpl.gameBoardView(arr, 0, 0, 0, 0);
+		Bear bear = new Bear(0, 0, 0);
+		bear.move();
+		System.out.println(bear.getX()+", "+bear.getY());
+
 	}
 
 }

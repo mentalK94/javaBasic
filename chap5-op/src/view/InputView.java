@@ -10,6 +10,5 @@ package view;
 
 public interface InputView {
 
-	public String inputKey(); // 방향키 입력 메소드
-	
+	public String inputKey();	
 }

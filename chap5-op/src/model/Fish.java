@@ -54,7 +54,7 @@ public class Fish extends GameObject {
 	}
 
 	@Override
-	public char getShape() {
-		return '@';
+	public String getShape() {
+		return "@";
 	}
 }

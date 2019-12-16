@@ -9,8 +9,11 @@ package model;
 
 import type.Move;
 import view.InputView;
+import view.InputViewImpl;
 
 public class Bear extends GameObject {
+	
+	InputView inputView = new InputViewImpl();
 	
 	public Bear(int startX, int startY, int distance) {
 		super(startX, startY, distance);
@@ -20,10 +23,10 @@ public class Bear extends GameObject {
 	public void move() {
 		
 		int preX = this.x;
-		int preY = this.y;
+		int preY = this.y;			
 		
 		// inputKey
-		String key = InputView.inputKey();
+		String key = inputView.inputKey();
 		if(key.equals("w")) {
 			System.out.println(Move.UP.name());
 			this.y--;
@@ -47,7 +50,7 @@ public class Bear extends GameObject {
 	}
 
 	@Override
-	public char getShape() {
-		return 'B';
+	public String getShape() {
+		return "B";
 	}
 }

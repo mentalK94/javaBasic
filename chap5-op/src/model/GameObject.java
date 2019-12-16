@@ -39,5 +39,5 @@ public abstract class GameObject {
 
 	public abstract void move(); // 객체 이동 메소드 : x or y값의 이동
 	
-	public abstract char getShape(); // 객체 모양 메소드	
+	public abstract String getShape(); // 객체 모양 메소드	
 }
